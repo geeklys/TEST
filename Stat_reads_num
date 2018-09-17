@@ -22,3 +22,7 @@ while (<IN2>){
 close IN2;
 print "$i\t";
 print "$num\n";
+
+$read_pair_num = `zcat ./data/newBGIseq500_1.fq.gz |wc -l |awk '{print $1}'`;
+print "$read_pair_num\n";
+
