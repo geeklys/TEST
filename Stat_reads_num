@@ -1,0 +1,24 @@
+#!/usr/bin/perl
+
+$fq1 = "./data/newBGIseq500_1.fq.gz";
+$fq2 = "./data/newBGIseq500_2.fq.gz";
+
+open IN1, "gunzip -c $fq1|" or die "MDZZ";
+while (<IN1>){
+	if (/^(@.*)\/1/){
+		$hash{$1} = 1;
+		$i++;
+	}
+}
+close IN1;
+
+$sum = 0;
+open IN2,"gunzip -c $fq2|" or die "MDZZ";
+while (<IN2>){
+	if (/^(@.*)\/2/){
+		$num++ if $hash{$1};
+	}
+}
+close IN2;
+print "$i\t";
+print "$num\n";
