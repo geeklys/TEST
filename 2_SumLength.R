@@ -1,3 +1,4 @@
+#!/usr/bin/R
 pdf("length.pdf")
 lens <- read.table("scaf_len.txt")
 pdata <- cumsum(lens[,2])
